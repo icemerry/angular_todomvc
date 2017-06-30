@@ -7,13 +7,15 @@
 
 ## Getting started
 
-- Read the [Application Specification](https://github.com/tastejs/todomvc/blob/master/app-spec.md) before touching the template.
+- 在本地新建一个文件夹 → 进入 → shift+右键 → 在此处打开命令窗口
 
-- Delete this file and rename `app-readme.md` to `readme.md` and fill it out.
+- 输入git clone https://github.com/icemerry/angular_todomvc.git并回车下载当前项目到本地新建的文件夹中
 
-- Clone this repo and install the dependencies with [npm](https://npmjs.com) by running: `npm install`.
+- cd angular_todomvc进入项目根目录
+
+- npm install下载项目所需的所有包
+
+- 双击index.html在浏览器中打开即可
 
 
-## License
 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" rel="dct:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://sindresorhus.com" property="cc:attributionName" rel="cc:attributionURL">TasteJS</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.en_US">Creative Commons Attribution 4.0 International License</a>.
