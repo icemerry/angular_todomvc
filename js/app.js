@@ -1,13 +1,25 @@
 (function(angular) {
     'use strict';
 
-    var myApp = angular.module('myApp', []);
+    var myApp = angular.module('myApp', ['ngRoute', 'todomvc.directive.autofocus']);
 
     myApp.config(['$locationProvider', function($locationProvider) {
         $locationProvider.hashPrefix('');
     }]);
 
-    var TodomvcController = myApp.controller('TodomvcController', ['$scope', '$location', function($scope, $location) {
+    myApp.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/:type', {
+            controller: 'TodomvcController',
+            templateUrl: 'main_tmpl'
+        }).when('/', {
+            controller: 'TodomvcController',
+            templateUrl: 'main_tmpl'
+        }).otherwise({
+            redirectTo: '/'
+        });
+    }]);
+
+    myApp.controller('TodomvcController', ['$scope', '$location', '$routeParams', function($scope, $location, $routeParams) {
 
         $scope.input = '';
 
@@ -83,19 +95,17 @@
             }
         };
 
-        $scope.$location = $location;
-        $scope.$watch('$location.path()', function(now, old) {
-            switch (now) {
-                case '/active':
-                    $scope.search = { 'completed': false };
-                    break;
-                case '/completed':
-                    $scope.search = { 'completed': true };
-                    break;
-                default:
-                    $scope.search = {};
-            }
-        });
+        $scope.search = {};
+        switch ($routeParams.type) {
+            case 'active':
+                $scope.search = { 'completed': false };
+                break;
+            case 'completed':
+                $scope.search = { 'completed': true };
+                break;
+            default:
+                $scope.search = {};
+        }
 
         $scope.currentEditingId = -1;
         $scope.editing = function(id) {
@@ -106,9 +116,6 @@
             $scope.currentEditingId = -1;
         };
 
-
     }]);
-
-
 
 })(angular);
